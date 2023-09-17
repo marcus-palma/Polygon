@@ -20,7 +20,7 @@ public:
 	// Ask user for shape. Note: The pointer to the Polygon object is not accessible outside this function.
 	void AskForShape();
 
-	// Listens for keyboard input, and doesn't stop until a valid key has been pressed.
+	std::vector<int> Keys;
 
 private:
 	std::string Shape;
