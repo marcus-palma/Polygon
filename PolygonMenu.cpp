@@ -43,6 +43,10 @@ void P::PolygonMenu::Main()
 	}
 }
 
+void P::PolygonMenu::AddShapeData(ShapeDataStruct& ShapeData) {
+	P::PolygonMenu::ShapeData.push_back(ShapeData);
+}
+
 void P::PolygonMenu::AskForShape()
 {
 	// Declare a pointer that's going to be used for the Polygon object later.

@@ -9,8 +9,12 @@ namespace P
 	class PolygonMenu;
 }
 
-class P::PolygonMenu
-{
+struct ShapeDataStruct {
+	std::string* ShapeName;
+	void (*ShapeMethod)() = nullptr;
+};
+
+class P::PolygonMenu {
 public:
 	// Constructor
 	PolygonMenu();
@@ -20,10 +24,16 @@ public:
 
 	// Ask user for shape. Note: The pointer to the Polygon object is not accessible outside this function.
 	void AskForShape();
+	
+	// Adder function for shape data list
+	void AddShapeData(ShapeDataStruct& ShapeData);
 
 private:
-	// Name of shape
+	// Name of shape (deprecated)
 	std::string Shape;
+
+	// A vector holding data locally inside main menu about the polygons. This is going to be used for the execution flow.
+	std::vector<ShapeDataStruct> ShapeData;
 
 	// A list of keys for binding yes and no for the question if user wants to try again
 	std::vector<int> Keys_TryAgain;
