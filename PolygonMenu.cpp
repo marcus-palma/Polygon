@@ -16,6 +16,11 @@ using std::cout; using std::cin; using std::endl;
 // Constructor
 P::PolygonMenu::PolygonMenu()
 {
+	// Setup before recursion loop
+	// Setup the collection of Virtual Keys for asking user for trying again
+	P::PolygonMenu::Keys_TryAgain.push_back('Y');
+	P::PolygonMenu::Keys_TryAgain.push_back('N');
+
 	P::PolygonMenu::Main();
 }
 
@@ -27,14 +32,9 @@ void P::PolygonMenu::Main()
 	cout << "Do you want to make a new shape? (Y/N)" << endl;
 
 	// Listen for key presses.
-	// Create a collection of Virtual Keys.
-	std::vector<int> Keys;
-	Keys.push_back('Y');
-	Keys.push_back('N');
-
 	P::KeyListener KeyListener;
 	int Key = 0;
-	Key = KeyListener.ListenForKeys(&Keys);
+	Key = KeyListener.ListenForKeys(&(P::PolygonMenu::Keys_TryAgain));
 	
 	// But 'N' does nothing.
 	if (Key == 'Y')
