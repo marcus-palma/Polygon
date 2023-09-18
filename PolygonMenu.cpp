@@ -43,6 +43,8 @@ void P::PolygonMenu::Main()
 	}
 }
 
+// Warning: It might store a pointer. If that's the case, it will crash trying to access an invalid pointer,
+// because it comes from a constructor that is no longer running when we need this variable
 void P::PolygonMenu::AddShapeData(ShapeDataStruct& ShapeData) {
 	P::PolygonMenu::ShapeData.push_back(ShapeData);
 }
