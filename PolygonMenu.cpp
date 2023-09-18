@@ -36,7 +36,7 @@ void P::PolygonMenu::Main()
 	int Key = 0;
 	Key = KeyListener.ListenForKeys(&(P::PolygonMenu::Keys_TryAgain));
 	
-	// But 'N' does nothing.
+	// But 'N' will continue towards program end
 	if (Key == 'Y')
 	{
 		P::PolygonMenu::Main();
