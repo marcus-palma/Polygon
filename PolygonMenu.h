@@ -22,8 +22,11 @@ public:
 	// Main functioning. Can loop.
 	void Main();
 
-	// Ask user for shape. Note: The pointer to the Polygon object is not accessible outside this function.
-	void AskForShape();
+	// (Deprecated) Ask user for shape. Note: The pointer to the Polygon object is not accessible outside this function.
+	//void AskForShape();
+	
+	// Ask user to select shape. Runs recursively until a valid key is pressed
+	void AskForShape2();
 	
 	// Adder function for shape data list
 	void AddShapeData(ShapeDataStruct& ShapeData);
