@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Polygon.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -11,7 +12,8 @@ namespace P
 
 struct ShapeDataStruct {
 	std::string* ShapeName;
-	void (*ShapeMethod)() = nullptr;
+	P::Polygon* BaseClassPointer = nullptr;
+	void (P::Polygon::*MemberPointer)() = nullptr;
 };
 
 class P::PolygonMenu {

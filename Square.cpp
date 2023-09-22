@@ -8,7 +8,8 @@ using std::cout; using std::endl; using std::cin;
 P::Square::Square(P::PolygonMenu* MenuRef) {
 	ShapeDataStruct ShapeData;
 	ShapeData.ShapeName = &ShapeName;
-	ShapeData.ShapeMethod = &P::Square::ShapeMethod;
+	ShapeData.BaseClassPointer = this;
+	ShapeData.MemberPointer = static_cast<void (P::Polygon::*)()> (&P::Square::ShapeMethod);
 	MenuRef->AddShapeData(ShapeData);
 }
 

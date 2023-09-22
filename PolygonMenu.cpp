@@ -48,8 +48,6 @@ void P::PolygonMenu::Main()
 	}
 }
 
-// Warning: It might store a pointer. If that's the case, it will crash trying to access an invalid pointer,
-// because it comes from a constructor that is no longer running when we need this variable
 void P::PolygonMenu::AddShapeData(ShapeDataStruct& ShapeData) {
 	P::PolygonMenu::ShapeData.push_back(ShapeData);
 }
@@ -203,12 +201,21 @@ void P::PolygonMenu::AskForShape2() {
 		// Check if returned pressed key is valid
 		// char numerical values for 1-9 are 49-58
 		if (Key >= '1' && Key - 49 <= size - 1) {
-			// Attempt running the chosen Shape's method through function pointer
-			void(*ShapeMethod)() = nullptr;
-			ShapeMethod = ShapeData.at(Key - 49).ShapeMethod;
-			if (ShapeMethod != nullptr) {
+			// Attempt calling the chosen shape's method
+
+			// Declare new variables
+			ShapeDataStruct Data;
+			void (P::Polygon::*MemberPointer)() = nullptr;
+
+			// Get values
+			Data = ShapeData.at(Key - 49);
+			P::Polygon* BaseClassPointer = Data.BaseClassPointer;
+			MemberPointer = Data.MemberPointer;
+
+			// Check if collected pointers are valid before calling with them
+			if (BaseClassPointer != nullptr && MemberPointer != nullptr) {
 				ShapeIsValid = true;
-				ShapeMethod();
+				(BaseClassPointer->*MemberPointer)();
 			}
 		}
 	}

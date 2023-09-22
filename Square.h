@@ -19,6 +19,6 @@ public:
 	virtual void CalculateArea() override;
 private:
 	std::string ShapeName = "Square";
-	// Static, because it's easier than getting a reference to a dynamic member function
-	static void ShapeMethod();
+	// The method for this type of shape
+	void ShapeMethod();
 };
