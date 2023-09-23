@@ -1,14 +1,20 @@
 #include "Circle.h"
 #include <iostream>
 
-// Put the shape name here:
-#define ShapeType Circle
-
 #define Pi 3.14159265358979323846
 
 using std::cout; using std::endl; using std::cin;
 
-void P::ShapeType::AskDimensions()
+// Intellisense will glitch sometimes about not being able to find overloaded instance
+P::Circle::Circle(P::PolygonMenu* MenuRef) {
+	ShapeDataStruct ShapeData;
+	ShapeData.ShapeName = &ShapeName;
+	ShapeData.BaseClassPointer = this;
+	ShapeData.MemberPointer = static_cast<void (P::Polygon::*)()> (&P::Circle::ShapeMethod);
+	MenuRef->AddShapeData(ShapeData);
+}
+
+void P::Circle::AskDimensions()
 {
 	int length;
 
@@ -18,7 +24,7 @@ void P::ShapeType::AskDimensions()
 	P::Polygon::SetDimensions(length, 0);
 }
 
-void P::ShapeType::CalculateArea()
+void P::Circle::CalculateArea()
 {
 	int radius, area;
 
@@ -28,4 +34,17 @@ void P::ShapeType::CalculateArea()
 	area = round(Pi * radius * radius * 0.5);
 
 	P::Polygon::SetArea(area);
+}
+
+void P::Circle::ShapeMethod()
+{
+	int radius, area;
+
+	// Ask for dimensions
+	cout << "How big radius do you want the " << ShapeName << " to have?" << endl;
+	cin >> radius;
+
+	// Calculate area and print out
+	area = round(Pi * radius * radius / 2);
+	cout << "The area of your " << ShapeName << " is: " << area << endl;
 }

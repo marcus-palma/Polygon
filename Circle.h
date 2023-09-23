@@ -1,19 +1,24 @@
 #pragma once
 
 #include "Polygon.h"
+#include "PolygonMenu.h"
 #include <string>
-
-// Put the shape name here:
-#define ShapeType Circle
 
 namespace P
 {
-	class ShapeType;
+	class Circle;
 }
 
-class P::ShapeType : public P::Polygon
+class P::Circle : public P::Polygon
 {
 public:
+	Circle();
+	// Constructor that should be run from Main Menu. It will add its ShapeData into the list in main menu and then return.
+	Circle(P::PolygonMenu* MenuRef);
 	virtual void AskDimensions() override;
 	virtual void CalculateArea() override;
+private:
+	std::string ShapeName = "Circle";
+	// The method for this type of shape
+	void ShapeMethod();
 };

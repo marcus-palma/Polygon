@@ -4,9 +4,9 @@
 #include "PolygonMenu.h"
 #include "Polygon.h"
 #include "Square.h"
-//#include "Rectangle.h"
-//#include "Triangle.h"
-//#include "Circle.h"
+#include "Rectangle.h"
+#include "Triangle.h"
+#include "Circle.h"
 #include "KeyListener.h" // Handles keyboard input
 #include <Windows.h>  // Windows API/library for keyboard input
 
@@ -24,6 +24,9 @@ P::PolygonMenu::PolygonMenu()
 	// "Load modules" by constructing each shape
 	// The constructors need a reference to this main menu
 	P::Square Square_Instance(this);
+	P::Rectangle Rectangle_Instance(this);
+	P::Triangle Triangle_Instance(this);
+	P::Circle Circle_Instance(this);
 
 	P::PolygonMenu::Main();
 }

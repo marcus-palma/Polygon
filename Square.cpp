@@ -35,12 +35,13 @@ void P::Square::CalculateArea()
 
 void P::Square::ShapeMethod()
 {
+	int length, area;
+
 	// Ask for dimensions
-	int length;
-	cout << "How long sides do you want the " << "Square" << " to have?" << endl;
+	cout << "How long sides do you want the " << ShapeName << " to have?" << endl;
 	cin >> length;
 
 	// Calculate area and print out
-	int area = length * length;
-	cout << "The area of your Square is: " << area << endl;
+	area = length * length;
+	cout << "The area of your " << ShapeName << " is: " << area << endl;
 }
