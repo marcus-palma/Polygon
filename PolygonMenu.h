@@ -5,8 +5,7 @@
 #include <string>
 #include <vector>
 
-namespace P
-{
+namespace P {
 	class PolygonMenu;
 }
 

@@ -15,8 +15,7 @@ P::Circle::Circle(P::PolygonMenu* MenuRef) {
 	MenuRef->AddShapeData(ShapeData);
 }
 
-void P::Circle::ShapeMethod()
-{
+void P::Circle::ShapeMethod() {
 	int radius, area;
 
 	// Ask for dimensions

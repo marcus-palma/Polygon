@@ -5,15 +5,12 @@
 #include <vector>
 #include <Windows.h> // Keyboard input.
 
-namespace P
-{
+namespace P {
 	class KeyListener;
 }
 
-class P::KeyListener
-{
+class P::KeyListener {
 public:
-
 	// Listen for keys getting pressed. Returns >0 for a Virtual Key number. Returns -1 on fail.
 	int ListenForKeys(std::vector<int>* Keys);
 
@@ -22,7 +19,6 @@ public:
 	// Returns VirtualKey integer.
 	int KeyListenerLoop();
 	
-
 	// Windows high level keyboard input stuff.
 	HANDLE hStdin = NULL;
 	DWORD fdwSaveOldMode = 0;
@@ -33,7 +29,6 @@ public:
 	void ResizeEventProc(WINDOW_BUFFER_SIZE_RECORD);
 
 private:
-	
 	bool KeyIsFound = false;
 
 	// The reference to the keys to listen for is stored here.

@@ -13,8 +13,7 @@ P::Rectangle::Rectangle(P::PolygonMenu* MenuRef) {
 	MenuRef->AddShapeData(ShapeData);
 }
 
-void P::Rectangle::ShapeMethod()
-{
+void P::Rectangle::ShapeMethod() {
 	int length, height, area;
 
 	// Ask for dimensions

@@ -7,11 +7,9 @@ using std::cout; using std::endl;
 
 bool KeepHookActive = true;
 
-int P::KeyListener::ListenForKeys(std::vector<int>* Keys)
-{
+int P::KeyListener::ListenForKeys(std::vector<int>* Keys) {
 	// Return here if Keys collection is empty or invalid.
-	if (Keys->size() <= 0)
-	{
+	if (Keys->size() <= 0) {
 		cout << "Error: P::KeyListener::ListenForKeys - Keys collection is empty or invalid" << endl;
 		return -1;
 	}
@@ -28,23 +26,18 @@ int P::KeyListener::ListenForKeys(std::vector<int>* Keys)
 	return FoundKey;
 }
 
-int P::KeyListener::KeyListenerLoop()
-{
+int P::KeyListener::KeyListenerLoop() {
 	// Check here if list of keys is valid, else throw an error.
-	if (Keys->size() <= 0)
-	{
+	if (Keys->size() <= 0) {
 		cout << "Error: KeyListener - ListenForKeys: size of Keys collection is invalid";
 		return -1;
 	}
 
 
 	bool ValidKeyListened = false;
-	while (!ValidKeyListened)
-	{
-		for (int forKey : *Keys)
-		{
-			if (GetKeyState(forKey) & 0x8000)	// "& 0x8000" checks if high-order bit is set (1 << 15)
-			{
+	while (!ValidKeyListened) {
+		for (int forKey : *Keys) {
+			if (GetKeyState(forKey) & 0x8000) {	// "& 0x8000" checks if high-order bit is set (1 << 15)
 				ValidKeyListened = true;
 				return forKey;
 			}
@@ -62,8 +55,7 @@ int P::KeyListener::KeyListenerLoop()
 
 // Windows console application high-level input hook.
 
-void P::KeyListener::Keyboard_HighLevelRead()
-{
+void P::KeyListener::Keyboard_HighLevelRead() {
 	DWORD cNumRead, fdwMode, i;
 	INPUT_RECORD irInBuf[128];
 	int counter = 0;
@@ -87,8 +79,7 @@ void P::KeyListener::Keyboard_HighLevelRead()
 
 	// Loop to read and handle the next 20 input events.
 
-	while (!KeyIsFound) //(counter++ <= 40)
-	{
+	while (!KeyIsFound) { //(counter++ <= 40)
 		// Wait for the events.
 
 		if (!ReadConsoleInput(
@@ -100,10 +91,8 @@ void P::KeyListener::Keyboard_HighLevelRead()
 
 		// Dispatch the events to the appropriate handler.
 
-		for (i = 0; i < cNumRead; i++)
-		{
-			switch (irInBuf[i].EventType)
-			{
+		for (i = 0; i < cNumRead; i++) {
+			switch (irInBuf[i].EventType) {
 			case KEY_EVENT: // keyboard input
 				KeyEventProc(irInBuf[i].Event.KeyEvent);
 				break;
@@ -133,8 +122,7 @@ void P::KeyListener::Keyboard_HighLevelRead()
 	SetConsoleMode(hStdin, fdwSaveOldMode);
 }
 
-void P::KeyListener::ErrorExit(LPCSTR lpszMessage)
-{
+void P::KeyListener::ErrorExit(LPCSTR lpszMessage) {
 	fprintf(stderr, "%s\n", lpszMessage);
 
 	// Restore input mode on exit.
@@ -144,8 +132,7 @@ void P::KeyListener::ErrorExit(LPCSTR lpszMessage)
 	ExitProcess(0);
 }
 
-void P::KeyListener::KeyEventProc(KEY_EVENT_RECORD ker)
-{
+void P::KeyListener::KeyEventProc(KEY_EVENT_RECORD ker) {
 	//printf("Key event: ");
 	//
 	//if (ker.bKeyDown)
@@ -160,11 +147,9 @@ void P::KeyListener::KeyEventProc(KEY_EVENT_RECORD ker)
 	int size = static_cast<int>(Keys->size());
 	int last_element = size - 1;
 
-	for (int i = 0; i <= last_element; i++)
-	{
+	for (int i = 0; i <= last_element; i++) {
 		Key = Keys->at(i);
-		if (ker.wVirtualKeyCode == Key)
-		{
+		if (ker.wVirtualKeyCode == Key) {
 			KeyIsFound = true;
 			FoundKey = Key;
 			break;
@@ -180,7 +165,7 @@ void P::KeyListener::MouseEventProc(MOUSE_EVENT_RECORD mer)
 	printf("Mouse event: ");
 
 	switch (mer.dwEventFlags)
-	{
+{
 	case 0:
 
 		if (mer.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED)

@@ -13,8 +13,7 @@
 using std::cout; using std::cin; using std::endl;
 
 // Constructor
-P::PolygonMenu::PolygonMenu()
-{
+P::PolygonMenu::PolygonMenu() {
 	// Setup before going into the recursing Main function
 	// Setup the collection of Virtual Keys for asking user for trying again
 	P::PolygonMenu::KeyBindings_TryAgain.push_back('Y');
@@ -46,8 +45,7 @@ P::PolygonMenu::PolygonMenu()
 	P::PolygonMenu::Main();
 }
 
-void P::PolygonMenu::Main()
-{
+void P::PolygonMenu::Main() {
 	P::PolygonMenu::AskForShape();
 
 	// Ask for doing it again.
@@ -59,8 +57,7 @@ void P::PolygonMenu::Main()
 	Key = KeyListener.ListenForKeys(&(P::PolygonMenu::KeyBindings_TryAgain));
 	
 	// But 'N' will continue towards program end
-	if (Key == 'Y')
-	{
+	if (Key == 'Y') {
 		P::PolygonMenu::Main();
 	}
 }
@@ -71,17 +68,14 @@ void P::PolygonMenu::AskForShape() {
 	// This is a while-loop for asking until the user input is valid
 	bool ShapeIsValid = false;
 	bool FirstIteration = true;
-	while (!ShapeIsValid)
-	{
+	while (!ShapeIsValid) {
 		// Display the question.
 		// The first line of the question is different after the user input has been invalid.
-		if (FirstIteration)
-		{
+		if (FirstIteration) {
 			cout << "Please choose a shape:" << endl;
 			FirstIteration = false;
 		}
-		else
-		{
+		else {
 			cout << "The pressed key is not valid. Please try again:" << endl;
 		}
 

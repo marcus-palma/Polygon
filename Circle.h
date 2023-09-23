@@ -4,13 +4,11 @@
 #include "PolygonMenu.h"
 #include <string>
 
-namespace P
-{
+namespace P {
 	class Circle;
 }
 
-class P::Circle : public P::Polygon
-{
+class P::Circle : public P::Polygon {
 public:
 	Circle();
 	// Constructor that should be run from Main Menu. It will add its ShapeData into the list in main menu and then return.

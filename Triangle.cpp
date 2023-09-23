@@ -13,8 +13,7 @@ P::Triangle::Triangle(P::PolygonMenu* MenuRef) {
 	MenuRef->AddShapeData(ShapeData);
 }
 
-void P::Triangle::ShapeMethod()
-{
+void P::Triangle::ShapeMethod() {
 	int length, height, area;
 
 	// Ask for dimensions

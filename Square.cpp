@@ -14,8 +14,7 @@ P::Square::Square(P::PolygonMenu* MenuRef) {
 	MenuRef->AddShapeData(ShapeData);
 }
 
-void P::Square::ShapeMethod()
-{
+void P::Square::ShapeMethod() {
 	int length, area;
 
 	// Ask for dimensions
