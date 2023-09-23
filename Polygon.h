@@ -36,6 +36,9 @@ public:
 	// Sets the private access area variable.
 	void SetArea(int area);
 
+protected:
+	std::string ShapeName = "Polygon";
+
 private:
 	std::string Shape = "Polygon";
 	int Length = 0;

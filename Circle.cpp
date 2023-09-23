@@ -7,6 +7,7 @@ using std::cout; using std::endl; using std::cin;
 
 // Intellisense will glitch sometimes about not being able to find overloaded instance
 P::Circle::Circle(P::PolygonMenu* MenuRef) {
+	ShapeName.assign("Circle");
 	ShapeDataStruct ShapeData;
 	ShapeData.ShapeName = &ShapeName;
 	ShapeData.BaseClassPointer = this;

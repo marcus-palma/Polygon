@@ -18,7 +18,6 @@ public:
 	virtual void AskDimensions() override;
 	virtual void CalculateArea() override;
 private:
-	std::string ShapeName = "Circle";
 	// The method for this type of shape
 	void ShapeMethod();
 };
