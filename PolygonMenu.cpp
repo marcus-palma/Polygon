@@ -33,7 +33,7 @@ P::PolygonMenu::PolygonMenu()
 
 void P::PolygonMenu::Main()
 {
-	P::PolygonMenu::AskForShape2();
+	P::PolygonMenu::AskForShape();
 
 	// Ask for doing it again.
 	cout << "Do you want to make a new shape? (Y/N)" << endl;
@@ -54,7 +54,7 @@ void P::PolygonMenu::AddShapeData(ShapeDataStruct& ShapeData) {
 	P::PolygonMenu::ShapeData.push_back(ShapeData);
 }
 
-void P::PolygonMenu::AskForShape2() {
+void P::PolygonMenu::AskForShape() {
 
 	// Get the size of ShapeData list
 	size_t size = ShapeData.size();
