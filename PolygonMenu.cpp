@@ -3,12 +3,16 @@
 #include <iostream>
 #include "PolygonMenu.h"
 #include "Polygon.h"
+
+// Keyboard direct input
+#include "KeyListener.h" // Handles keyboard input
+#include <Windows.h>  // Windows API/library for keyboard input
+
+// Modular shapes
 #include "Square.h"
 #include "Rectangle.h"
 #include "Triangle.h"
 #include "Circle.h"
-#include "KeyListener.h" // Handles keyboard input
-#include <Windows.h>  // Windows API/library for keyboard input
 
 using std::cout; using std::cin; using std::endl;
 
