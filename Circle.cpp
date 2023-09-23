@@ -15,28 +15,6 @@ P::Circle::Circle(P::PolygonMenu* MenuRef) {
 	MenuRef->AddShapeData(ShapeData);
 }
 
-void P::Circle::AskDimensions()
-{
-	int length;
-
-	cout << "How big radius do you want the " << P::Polygon::GetShapeName() << " to have?" << endl;
-	cin >> length;
-
-	P::Polygon::SetDimensions(length, 0);
-}
-
-void P::Circle::CalculateArea()
-{
-	int radius, area;
-
-	std::string direction_l = "length";
-	radius = P::Polygon::GetDimension(direction_l);
-
-	area = round(Pi * radius * radius * 0.5);
-
-	P::Polygon::SetArea(area);
-}
-
 void P::Circle::ShapeMethod()
 {
 	int radius, area;

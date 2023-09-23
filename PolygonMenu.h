@@ -23,9 +23,6 @@ public:
 
 	// Main functioning. Can loop.
 	void Main();
-
-	// (Deprecated) Ask user for shape. Note: The pointer to the Polygon object is not accessible outside this function.
-	//void AskForShape();
 	
 	// Ask user to select shape. Runs recursively until a valid key is pressed
 	void AskForShape2();
@@ -34,9 +31,6 @@ public:
 	void AddShapeData(ShapeDataStruct& ShapeData);
 
 private:
-	// Name of shape (deprecated)
-	std::string Shape;
-
 	// A vector holding data locally inside main menu about the polygons. This is going to be used for the execution flow.
 	std::vector<ShapeDataStruct> ShapeData;
 

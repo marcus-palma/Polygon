@@ -14,26 +14,6 @@ P::Square::Square(P::PolygonMenu* MenuRef) {
 	MenuRef->AddShapeData(ShapeData);
 }
 
-void P::Square::AskDimensions()
-{
-	int length;
-
-	cout << "How long sides do you want the " << P::Polygon::GetShapeName() << " to have?" << endl;
-	cin >> length;
-
-	P::Polygon::SetDimensions(length, 0);
-}
-
-void P::Square::CalculateArea()
-{
-	int length;
-
-	std::string direction_l = "length";
-	length = P::Polygon::GetDimension(direction_l);
-
-	P::Polygon::SetArea(length * length);
-}
-
 void P::Square::ShapeMethod()
 {
 	int length, area;

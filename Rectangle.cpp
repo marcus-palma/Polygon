@@ -13,30 +13,6 @@ P::Rectangle::Rectangle(P::PolygonMenu* MenuRef) {
 	MenuRef->AddShapeData(ShapeData);
 }
 
-void P::Rectangle::AskDimensions()
-{
-	int length, height;
-
-	cout << "How long do you want " << P::Polygon::GetShapeName() << " to be?" << endl;
-	cin >> length;
-	cout << "How high do you want the " << P::Polygon::GetShapeName() << " to be?" << endl;
-	cin >> height;
-
-	P::Polygon::SetDimensions(length, height);
-}
-
-void P::Rectangle::CalculateArea()
-{
-	int length, height;
-
-	std::string direction_l = "length";
-	std::string direction_h = "height";
-	length = P::Polygon::GetDimension(direction_l);
-	height = P::Polygon::GetDimension(direction_h);
-
-	P::Polygon::SetArea(length * height);
-}
-
 void P::Rectangle::ShapeMethod()
 {
 	int length, height, area;

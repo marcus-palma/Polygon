@@ -15,8 +15,6 @@ public:
 	Square();
 	// Constructor that should be run from Main Menu. It will add its ShapeData into the list in main menu and then return.
 	Square(P::PolygonMenu* MenuRef);
-	virtual void AskDimensions() override;
-	virtual void CalculateArea() override;
 private:
 	// The method for this type of shape
 	void ShapeMethod();
