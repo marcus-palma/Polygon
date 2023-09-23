@@ -34,6 +34,12 @@ private:
 	// A vector holding data locally inside main menu about the polygons. This is going to be used for the execution flow.
 	std::vector<ShapeDataStruct> ShapeData;
 
+	// Number of items in ShapeData list
+	size_t size = 0;
+
 	// A list of keys for binding yes and no for the question if user wants to try again
-	std::vector<int> Keys_TryAgain;
+	std::vector<int> KeyBindings_TryAgain;
+
+	// Key-binding list for shape selection list
+	std::vector<int> KeyBindings_ShapeList;
 };

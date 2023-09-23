@@ -10,16 +10,15 @@
 #include "KeyListener.h" // Handles keyboard input
 #include <Windows.h>  // Windows API/library for keyboard input
 
-
 using std::cout; using std::cin; using std::endl;
 
 // Constructor
 P::PolygonMenu::PolygonMenu()
 {
-	// Setup before recursion loop
+	// Setup before going into the recursing Main function
 	// Setup the collection of Virtual Keys for asking user for trying again
-	P::PolygonMenu::Keys_TryAgain.push_back('Y');
-	P::PolygonMenu::Keys_TryAgain.push_back('N');
+	P::PolygonMenu::KeyBindings_TryAgain.push_back('Y');
+	P::PolygonMenu::KeyBindings_TryAgain.push_back('N');
 
 	// "Load modules" by constructing each shape
 	// The constructors need a reference to this main menu
@@ -27,6 +26,22 @@ P::PolygonMenu::PolygonMenu()
 	P::Rectangle Rectangle_Instance(this);
 	P::Triangle Triangle_Instance(this);
 	P::Circle Circle_Instance(this);
+
+	// Prepare key bindings for choosing shape in a list
+	// Get the size of ShapeData list
+	size = ShapeData.size();
+
+	// Check if size is valid
+	if (size <= 0 && size <= 9) {
+		cout << "Error: ShapeData list is empty, or its size is invalid or too big";
+		return;
+	}
+
+	// Propagate key-binding list
+	for (int i = 0; i <= size-1; i++) {
+		// char '1' numerical value is 49. We count from there
+		KeyBindings_ShapeList.push_back(49 + i);
+	}
 
 	P::PolygonMenu::Main();
 }
@@ -41,7 +56,7 @@ void P::PolygonMenu::Main()
 	// Listen for key presses.
 	P::KeyListener KeyListener;
 	int Key = 0;
-	Key = KeyListener.ListenForKeys(&(P::PolygonMenu::Keys_TryAgain));
+	Key = KeyListener.ListenForKeys(&(P::PolygonMenu::KeyBindings_TryAgain));
 	
 	// But 'N' will continue towards program end
 	if (Key == 'Y')
@@ -50,29 +65,8 @@ void P::PolygonMenu::Main()
 	}
 }
 
-void P::PolygonMenu::AddShapeData(ShapeDataStruct& ShapeData) {
-	P::PolygonMenu::ShapeData.push_back(ShapeData);
-}
-
 void P::PolygonMenu::AskForShape() {
 
-	// Get the size of ShapeData list
-	size_t size = ShapeData.size();
-
-	// Check if size is valid
-	if (size <= 0 && size <= 9) {
-		cout << "Error: ShapeData list is empty, or its size is invalid or too big";
-		return;
-	}
-
-	// Create the key-binding list
-	std::vector<int> KeyBindings;
-
-	// Propagate key-binding list
-	for (int i = 0; i <= size-1; i++) {
-		// char '1' numerical value is 49. We count from there
-		KeyBindings.push_back(49 + i);
-	}
 	
 	// This is a while-loop for asking until the user input is valid
 	bool ShapeIsValid = false;
@@ -100,7 +94,7 @@ void P::PolygonMenu::AskForShape() {
 		// Listen for user key input
 		P::KeyListener KeyListener;
 		int Key = 0;
-		Key = KeyListener.ListenForKeys(&KeyBindings);
+		Key = KeyListener.ListenForKeys(&KeyBindings_ShapeList);
 
 		// Check if returned pressed key is valid
 		// char numerical values for 1-9 are 49-58
@@ -123,4 +117,8 @@ void P::PolygonMenu::AskForShape() {
 			}
 		}
 	}
+}
+
+void P::PolygonMenu::AddShapeData(ShapeDataStruct& ShapeData) {
+	P::PolygonMenu::ShapeData.push_back(ShapeData);
 }
