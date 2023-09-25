@@ -2,17 +2,10 @@
 
 #include <iostream>
 #include "PolygonMenu.h"
-#include "Polygon.h"
 
 // Keyboard direct input
 #include "KeyListener.h" // Handles keyboard input
 #include <Windows.h>  // Windows API/library for keyboard input
-
-// Modular shapes
-#include "Square.h"
-#include "Rectangle.h"
-#include "Triangle.h"
-#include "Circle.h"
 
 using std::cout; using std::cin; using std::endl;
 
@@ -23,17 +16,10 @@ P::PolygonMenu::PolygonMenu() {
 	P::PolygonMenu::KeyBindings_TryAgain.push_back('Y');
 	P::PolygonMenu::KeyBindings_TryAgain.push_back('N');
 
-	// "Load modules" by constructing each shape
-	// The constructors need a reference to this main menu
-	P::Square Square_Instance(this);
-	P::Rectangle Rectangle_Instance(this);
-	P::Triangle Triangle_Instance(this);
-	P::Circle Circle_Instance(this);
-
 	// Prepare key bindings for choosing shape in a list
 	// Get the size of ShapeData list
-	size = ShapeData.size();
-
+	size = ShapeModuleData.size();
+	
 	// Check if size is valid
 	if (size <= 0 && size <= 9) {
 		cout << "Error: ShapeData list is empty, or its size is invalid or too big";
@@ -68,7 +54,6 @@ void P::PolygonMenu::Main() {
 
 void P::PolygonMenu::AskForShape() {
 
-	
 	// This is a while-loop for asking until the user input is valid
 	bool ShapeIsValid = false;
 	bool FirstIteration = true;
@@ -86,7 +71,7 @@ void P::PolygonMenu::AskForShape() {
 		// Display the list of shapes to choose from
 		for (int i = 0; i <= size - 1; i++) {
 			// Format: #. Name
-			cout << i + 1 << ". " << *ShapeData.at(i).ShapeName << endl;
+			cout << i + 1 << ". " << *ShapeModuleData.at(i).ShapeName << endl;
 		}
 
 		// Listen for user key input
@@ -115,8 +100,4 @@ void P::PolygonMenu::AskForShape() {
 			}
 		}
 	}
-}
-
-void P::PolygonMenu::AddShapeData(ShapeDataStruct& ShapeData) {
-	P::PolygonMenu::ShapeData.push_back(ShapeData);
 }

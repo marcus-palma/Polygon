@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Polygon.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -8,12 +7,6 @@
 namespace P {
 	class PolygonMenu;
 }
-
-struct ShapeDataStruct {
-	std::string* ShapeName;
-	P::Polygon* BaseClassPointer = nullptr;
-	void (P::Polygon::*MemberPointer)() = nullptr;
-};
 
 class P::PolygonMenu {
 public:
@@ -25,15 +18,19 @@ public:
 	
 	// Ask user to select shape. Runs recursively until a valid key is pressed
 	void AskForShape();
-	
-	// Adder function for shape data list
-	void AddShapeData(ShapeDataStruct& ShapeData);
 
 private:
-	// A vector holding data locally inside main menu about the polygons. This is going to be used for the execution flow.
-	std::vector<ShapeDataStruct> ShapeData;
+	// A struct for storing shape module data that was loaded from the disk
+	struct ShapeModuleStruct {
+		std::string Name;
+		std::string Question;
+		std::string Area;
+	};
 
-	// Number of items in ShapeData list
+	// A vector holding data locally inside main menu about the polygons. This is going to be used for the execution flow.
+	std::vector<ShapeModuleStruct> ShapeModuleData;
+
+	// Number of items in ShapeModuleData list
 	size_t size = 0;
 
 	// A list of keys for binding yes and no for the question if user wants to try again
