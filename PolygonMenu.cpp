@@ -80,7 +80,9 @@ bool P::PolygonMenu::LoadShapeModules()
 			// Validate filename. It should start with "Polygon_" and end with ".txt"
 			if (filename.find("Polygon_") != string::npos && filename.rfind(".txt") != string::npos)
 			{
+				#ifndef NDEBUG	// Pre-compiler statement to check if the build configuration is debug without performance optimization
 				cout << "LoadShapeModules: Found the following file with proper naming convention, and will be analyzed further: " << filename << endl;
+				#endif
 
 				// Load this file
 				// Make a complete target destination to open with path and filename
